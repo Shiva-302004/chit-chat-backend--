@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "this chat app is mern project;",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shiva-302004/chit-chat-backend--.git"
+  },
+  "author": "shiva verma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shiva-302004/chit-chat-backend--/issues"
+  },
+  "homepage": "https://github.com/Shiva-302004/chit-chat-backend--#readme"
+}
