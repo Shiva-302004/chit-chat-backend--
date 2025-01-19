@@ -8,12 +8,13 @@ const socketio=require("socket.io")
 
 const server=http.createServer(app)
 
-const io=socketio(server,{
-    pingTimeout:60000,
-    cors:{
-        origin:"https://chitchat-chat.netlify.app/"
+const io = socketio(server, {
+    pingTimeout: 60000,
+    cors: {
+        origin: "https://chitchat-chat.netlify.app", // update this to your production site's URL
+        methods: ["GET", "POST","PUT"] // specify allowed HTTP methods if needed
     }
-})
+});
 
 const db=require("../database/dbconn")
 const cors=require("cors")
