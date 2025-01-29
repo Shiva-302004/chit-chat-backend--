@@ -11,7 +11,7 @@ const server=http.createServer(app)
 const io = socketio(server, {
     pingTimeout: 60000,
     cors: {
-        origin: "https://chitchat-chat.netlify.app", // update this to your production site's URL
+        origin: "https://chitchat-chat.vercel.app", // update this to your production site's URL
         methods: ["GET", "POST","PUT"] // specify allowed HTTP methods if needed
     }
 });
