@@ -2,6 +2,7 @@ const express=require("express")
 const { upload, cloud } = require("../multer/multer")
 const UserModel=require("../models/UserSchema")
 const dotenv=require("dotenv")
+const axios=require("axios")
 dotenv.config()
 const route1=express.Router()
 const bcryptjs=require("bcryptjs")
@@ -29,6 +30,18 @@ route1.post("/signup",async(req,res)=>{
     if(!validator.isEmail(email)){
         return res.json({msg:"enter a valid email",success:false})
     }
+    const axios = require('axios');
+    const response = await axios.get('https://api.emails-checker.net/check', {
+    params: { 
+        access_key: "ayCxW37jzrcuqV4c8RV5l",
+        email: email,
+    }
+    });
+    if(response.data.response.result=='undeliverable'){
+        return res.json({success:false,msg:`${email} is not a valid email try again with another email`})
+    }
+    console.log(response.data.response);
+    // return response.data.response;
     const isExisting=await UserModel.findOne({email:email})
     if(isExisting){
         return  res.json({success:false,msg:"email already in use"})
@@ -47,7 +60,6 @@ route1.post("/signup",async(req,res)=>{
         const token=await jwt.sign(payload,secret)
         return res.json({success:true,msg:`Welcome ${name} 😍 ! your registration successfull`,token,user:newuser})
     }
-
 })
 route1.post("/login",async(req,res)=>{
     const {email,password}=req.body
