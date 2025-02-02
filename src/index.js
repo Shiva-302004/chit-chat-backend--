@@ -25,6 +25,7 @@ const chat=require("../chats/chats")
 const route1=require("../routes/userroute")
 const chatroute = require("../routes/chatroute")
 const messageroute=require("../routes/messageroute")
+const otproute=require("../routes/otp")
 dotenv.config();
 const PORT=process.env.PORT
 
@@ -33,6 +34,7 @@ app.use(express.json())
 app.use("/user",route1)
 app.use("/chats",chatroute);
 app.use("/message",messageroute)
+app.use("/otp",otproute)
 app.get("/api/chats",(req,res)=>{
     res.send(chat)
 })
